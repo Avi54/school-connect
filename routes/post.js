@@ -18,4 +18,21 @@ router.post('/', ensureAuth, async (req, res) => {
     }
 })
 
+router.get('/', ensureAuth, async (req, res) => {
+    try {
+        const posts = await Post.find()
+        .populate('user')
+        .sort({
+            creatAt: 'desc'
+        })
+        .lean()
+
+        res.render('post/post', {
+        posts
+    })
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 module.exports = router
