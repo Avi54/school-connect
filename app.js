@@ -7,6 +7,7 @@ const path = require('path')
 const session = require('express-session')
 const connectDB = require('./config/db');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 
 const MongoStore = require('connect-mongo')
 
@@ -18,6 +19,8 @@ require('./config/passport')(passport)
 connectDB()
 
 const app = express()
+
+app.use(express.urlencoded({ extended: false}))
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))

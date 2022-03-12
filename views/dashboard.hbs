@@ -1,7 +1,7 @@
 <h3>Welcome {{name}}</h3>
 {{> btn}}
 
-{{#if projects}}
+{{#if posts}}
 <table class="striped">
     <thead>
         <thead>
@@ -13,20 +13,15 @@
         </thead>
     </thead>
     <tbody>
-        {{#each projects}}
+        {{#each posts}}
         <tr>
             <td><a href="/posts/{{_id}}">{{title}}</a></td>
             <td>{{createdAt}}</td>
             <td>
-                <a href="/posts/edit/{{_id}}" class="btn blue">
-                    <i class="fas fa-edit"></i>
-                </a>
-            </td>
-            <td>
                 <form action="/posts/{{_id}}" method="POST" id="delete-form">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn red">
-                        <i class="fas fa-trash-alt"></i>
+                        Delete
                     </button>
                 </form>
             </td>

@@ -10,9 +10,9 @@ router.get('/', ensureGuest, (req, res) => {
     })
 })
 
-router.get('/dashboard', ensureAuth, (req, res) => {
+router.get('/dashboard', ensureAuth, async (req, res) => {
     try {
-        const posts = Post.find({ 
+        const posts = await Post.find({ 
             // removed await
             user: req.user.id
         }).lean()
