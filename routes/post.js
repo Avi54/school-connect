@@ -35,4 +35,16 @@ router.get('/', ensureAuth, async (req, res) => {
     }
 })
 
+router.delete('/:id', ensureAuth, async (req, res) => {
+    try {
+        await Post.remove({
+            _id: req.params.id
+        })
+        // swal("Hello world!");
+        res.redirect('/dashboard')
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 module.exports = router

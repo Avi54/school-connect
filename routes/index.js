@@ -27,4 +27,8 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
     }
 })
 
+router.get('/event', ensureAuth, (req, res) => {
+    res.render('event')
+})
+
 module.exports = router
